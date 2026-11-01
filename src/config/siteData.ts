@@ -363,7 +363,6 @@ export const siteConfig = {
     oldPrice: 'De R$ 97,90',
     priceInteger: '27',
     priceDecimals: ',90',
-    basePriceNum: 27.90,
     billingType: 'pagamento único · acesso vitalício',
     socialProofCount: '+1.480 donos de autopropelidos já escolheram esta oferta',
     deliverables: [
@@ -384,30 +383,6 @@ export const siteConfig = {
     ctaText: 'GARANTIR MEU ACESSO AGORA',
     checkoutUrl: 'https://pay.hotmart.com/SEUPRODUTO',
     securityDetails: '🔒 Pagamento Seguro • Acesso Imediato • Garantia de 7 Dias',
-    orderBumps: [
-      {
-        id: 'passaporte',
-        tag: 'ORDER BUMP #1 • RECOMENDADO',
-        title: 'Passaporte de Manutenção Digital',
-        subtitle: 'Planilha Inteligente (.xlsx) + Guia Rápido de Acompanhamento (PDF)',
-        image: '/images/order-bump-1.webp',
-        priceNum: 11.90,
-        priceFormatted: '11,90',
-        originalPrice: 'R$ 37,00',
-        description: 'Histórico completo de revisões, trocas de peças e alertas periódicos do seu veículo. Aumenta a vida útil da bateria e valoriza seu autopropelido em até 30% na revenda.',
-      },
-      {
-        id: 'kit-oficina',
-        tag: 'ORDER BUMP #2 • BLINDAGEM',
-        title: 'Kit Oficina sem Surpresas & Comparador de Orçamentos',
-        subtitle: 'Planilha Comparadora (.xlsx) + Guia com 12 Scripts de Negociação (PDF)',
-        image: '/images/order-bump-2.webp',
-        priceNum: 8.90,
-        priceFormatted: '8,90',
-        originalPrice: 'R$ 47,00',
-        description: 'O método blindado para negociar com assistências técnicas sem ser enganado. Compare até 3 orçamentos e use 12 mensagens prontas para exigir diagnósticos claros.',
-      },
-    ],
   },
 
   // ─── 10. DEPOIMENTOS WHATSAPP ──────────────────────────────────────────────

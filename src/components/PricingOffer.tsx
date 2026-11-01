@@ -1,22 +1,8 @@
-import { useState } from 'react'
-import { Check, ArrowRight, Lock, Flame, Star, Gift } from 'lucide-react'
+import { Check, ArrowRight, Lock, Flame, Star } from 'lucide-react'
 import { siteConfig } from '../config/siteData'
 
 export default function PricingOffer() {
   const { pricingOffer } = siteConfig
-  const [bumpsActive, setBumpsActive] = useState<Record<string, boolean>>({})
-
-  const toggleBump = (id: string) => {
-    setBumpsActive((prev) => ({ ...prev, [id]: !prev[id] }))
-  }
-
-  // Calcula preço total (base + bumps ativos)
-  const totalPrice =
-    pricingOffer.basePriceNum +
-    (pricingOffer.orderBumps ?? []).reduce(
-      (acc, bump) => acc + (bumpsActive[bump.id] ? bump.priceNum : 0),
-      0
-    )
 
   return (
     <section id={pricingOffer.anchorId} className="bg-[#f1f5f9] px-4 py-12 sm:py-16 border-t border-slate-200">
@@ -83,107 +69,6 @@ export default function PricingOffer() {
               </li>
             ))}
           </ul>
-
-          {/* ─── ORDER BUMPS ─── */}
-          {pricingOffer.orderBumps && pricingOffer.orderBumps.length > 0 && (
-            <div className="mt-6 space-y-4 border-t border-dashed border-amber-300 pt-6">
-              <p className="text-center text-xs font-black uppercase tracking-wider text-amber-600 flex items-center justify-center gap-1.5">
-                <Gift className="h-4 w-4" />
-                Turbine seu pacote com extras exclusivos
-              </p>
-
-              {pricingOffer.orderBumps.map((bump) => {
-                const isActive = bumpsActive[bump.id] ?? false
-                return (
-                  <div
-                    key={bump.id}
-                    className={`relative overflow-hidden rounded-xl border-2 transition-all duration-200 ${
-                      isActive
-                        ? 'border-amber-400 bg-amber-50/50 shadow-md shadow-amber-100'
-                        : 'border-dashed border-slate-300 bg-white hover:border-amber-300'
-                    }`}
-                  >
-                    {/* Tag Badge */}
-                    <div className={`px-4 py-1.5 text-[10px] font-black uppercase tracking-wider text-center ${
-                      isActive ? 'bg-amber-400 text-[#0f172a]' : 'bg-[#0f172a] text-amber-400'
-                    }`}>
-                      {bump.tag}
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4 p-4">
-                      {/* Mockup Image */}
-                      <div className="flex-shrink-0 mx-auto sm:mx-0 w-28 sm:w-32">
-                        <img
-                          src={bump.image}
-                          alt={bump.title}
-                          className="w-full h-auto object-contain rounded-lg"
-                          loading="lazy"
-                        />
-                      </div>
-
-                      {/* Text Content */}
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-display text-sm font-black text-slate-900 leading-snug">
-                          {bump.title}
-                        </h4>
-                        <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
-                          {bump.subtitle}
-                        </p>
-                        <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                          {bump.description}
-                        </p>
-
-                        {/* Price + Toggle */}
-                        <div className="mt-3 flex items-center justify-between gap-3 flex-wrap">
-                          <div className="flex items-baseline gap-2">
-                            <span className="text-[11px] text-slate-400 line-through font-semibold">
-                              {bump.originalPrice}
-                            </span>
-                            <span className="font-display text-lg font-black text-[#0f172a]">
-                              R$ {bump.priceFormatted}
-                            </span>
-                          </div>
-
-                          <button
-                            onClick={() => toggleBump(bump.id)}
-                            className={`flex items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-bold uppercase tracking-wide transition-all ${
-                              isActive
-                                ? 'bg-amber-400 text-[#0f172a] shadow-sm'
-                                : 'bg-[#0f172a] text-amber-400 hover:bg-[#1e293b]'
-                            }`}
-                          >
-                            <span
-                              className={`flex h-4 w-4 items-center justify-center rounded border-2 transition-colors ${
-                                isActive
-                                  ? 'border-[#0f172a] bg-[#0f172a]'
-                                  : 'border-amber-400'
-                              }`}
-                            >
-                              {isActive && <Check className="h-3 w-3 text-amber-400" strokeWidth={3} />}
-                            </span>
-                            {isActive ? 'Adicionado ✓' : 'Sim, eu quero!'}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-
-              {/* Dynamic total (visual only) */}
-              {Object.values(bumpsActive).some(Boolean) && (
-                <div className="text-center rounded-lg bg-[#0f172a] p-3 text-white">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                    Valor total atualizado
-                  </p>
-                  <p className="font-display text-2xl font-black mt-0.5">
-                    R$ {totalPrice.toFixed(2).replace('.', ',')}
-                  </p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">pagamento único · acesso vitalício</p>
-                </div>
-              )}
-            </div>
-          )}
 
           {/* Botão de Ação */}
           <div className="mt-6">
