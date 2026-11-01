@@ -381,7 +381,7 @@ export const siteConfig = {
       '🎁 BÔNUS #6 — O Mapa das Peças Difíceis (R$ 47)',
     ],
     ctaText: 'GARANTIR MEU ACESSO AGORA',
-    checkoutUrl: 'https://pay.hotmart.com/SEUPRODUTO',
+    checkoutUrl: 'https://pay.wiapy.com/dJLpyslM1eoB',
     securityDetails: '🔒 Pagamento Seguro • Acesso Imediato • Garantia de 7 Dias',
   },
 

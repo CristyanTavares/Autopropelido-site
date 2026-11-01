@@ -1,5 +1,6 @@
 import { Check, ArrowRight, ShieldCheck } from 'lucide-react'
 import { siteConfig } from '../config/siteData'
+import { redirectTo } from '../utils/navigation'
 
 export default function Hero() {
   const { hero } = siteConfig
@@ -59,7 +60,11 @@ export default function Hero() {
         <div className="mt-7 flex flex-col items-center">
           <a
             href={hero.ctaLink}
-            className="btn-direct-cta group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl px-7 py-4 text-base sm:text-lg font-black uppercase tracking-wide text-white transition-transform hover:scale-[1.01] active:scale-[0.98] animate-pulse-cta"
+            onClick={(e) => {
+              e.preventDefault()
+              redirectTo(hero.ctaLink)
+            }}
+            className="btn-direct-cta group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl px-7 py-4 text-base sm:text-lg font-black uppercase tracking-wide text-white transition-transform hover:scale-[1.01] active:scale-[0.98] animate-pulse-cta cursor-pointer"
           >
             <span>{hero.ctaButton}</span>
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />

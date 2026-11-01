@@ -1,5 +1,6 @@
 import { ArrowRight, LayoutDashboard, Sparkles, BookOpen, Clock } from 'lucide-react'
 import { siteConfig } from '../config/siteData'
+import { redirectTo } from '../utils/navigation'
 
 export default function ClaritySection() {
   const { claritySection, hero } = siteConfig
@@ -103,7 +104,11 @@ export default function ClaritySection() {
         <div className="mt-10 text-center">
           <a
             href={hero.ctaLink}
-            className="btn-direct-cta inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm sm:text-base font-black uppercase text-white hover:scale-[1.01] transition-transform"
+            onClick={(e) => {
+              e.preventDefault()
+              redirectTo(hero.ctaLink)
+            }}
+            className="btn-direct-cta inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm sm:text-base font-black uppercase text-white hover:scale-[1.01] transition-transform cursor-pointer"
           >
             <span>{claritySection.ctaText}</span>
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />

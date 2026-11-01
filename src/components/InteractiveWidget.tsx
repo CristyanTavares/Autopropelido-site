@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ArrowRight, HelpCircle, CheckCircle2 } from 'lucide-react'
 import { siteConfig } from '../config/siteData'
+import { redirectTo } from '../utils/navigation'
 
 export default function InteractiveWidget() {
   const { interactiveWidget, hero } = siteConfig
@@ -76,7 +77,11 @@ export default function InteractiveWidget() {
             </span>
             <a
               href={hero.ctaLink}
-              className="btn-direct-cta inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-black uppercase text-white hover:scale-105 transition-transform w-full sm:w-auto justify-center"
+              onClick={(e) => {
+                e.preventDefault()
+                redirectTo(hero.ctaLink)
+              }}
+              className="btn-direct-cta inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-black uppercase text-white hover:scale-105 transition-transform w-full sm:w-auto justify-center cursor-pointer"
             >
               <span>Acessar no Manual</span>
               <ArrowRight className="h-4 w-4" strokeWidth={3} />

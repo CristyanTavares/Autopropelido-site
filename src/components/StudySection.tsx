@@ -1,5 +1,6 @@
 import { Clock, ArrowRight } from 'lucide-react'
 import { siteConfig } from '../config/siteData'
+import { redirectTo } from '../utils/navigation'
 
 export default function StudySection() {
   const { studySection, hero } = siteConfig
@@ -50,7 +51,11 @@ export default function StudySection() {
           <div className="mt-5">
             <a
               href={hero.ctaLink}
-              className="btn-direct-cta inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm sm:text-base font-black uppercase text-white hover:scale-[1.01] transition-transform"
+              onClick={(e) => {
+                e.preventDefault()
+                redirectTo(hero.ctaLink)
+              }}
+              className="btn-direct-cta inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm sm:text-base font-black uppercase text-white hover:scale-[1.01] transition-transform cursor-pointer"
             >
               <span>{studySection.ctaText}</span>
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />

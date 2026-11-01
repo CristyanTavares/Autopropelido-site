@@ -1,5 +1,6 @@
 import { Check, ArrowRight, Lock, Flame, Star } from 'lucide-react'
 import { siteConfig } from '../config/siteData'
+import { redirectTo, buildUrlWithCurrentParams } from '../utils/navigation'
 
 export default function PricingOffer() {
   const { pricingOffer } = siteConfig
@@ -73,8 +74,12 @@ export default function PricingOffer() {
           {/* Botão de Ação */}
           <div className="mt-6">
             <a
-              href={pricingOffer.checkoutUrl}
-              className="btn-direct-cta group flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-base sm:text-lg font-black uppercase text-white shadow-md transition-transform hover:scale-[1.01] active:scale-[0.98] animate-pulse-cta"
+              href={buildUrlWithCurrentParams(pricingOffer.checkoutUrl)}
+              onClick={(e) => {
+                e.preventDefault()
+                redirectTo(pricingOffer.checkoutUrl)
+              }}
+              className="btn-direct-cta group flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-base sm:text-lg font-black uppercase text-white shadow-md transition-transform hover:scale-[1.01] active:scale-[0.98] animate-pulse-cta cursor-pointer"
             >
               <span>{pricingOffer.ctaText}</span>
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
